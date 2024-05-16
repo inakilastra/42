@@ -6,9 +6,11 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:14:06 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/18 15:54:51 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:14:49 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
@@ -23,6 +25,31 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 		i++;
 	}
 }
+
+/** MAIN CON ARGUMENTOS  * /
+void	change_case(unsigned int i, char *c)
+{
+	if (i % 2 == 0)
+		*c = ft_tolower(*c);
+	else
+		*c = ft_toupper(*c);
+}
+
+int	main(int argc, char **argv)
+{
+	char	*s;
+
+	if (argc != 2)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	s = argv[1];
+	printf("Cadena original: '%s'\n", s);
+	ft_striteri(s, &change_case);
+	printf("Cadena modificada: '%s'\n", s);
+	return (0);
+}*/
 
 /**
 Nombre de función
@@ -60,30 +87,5 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 		f(i, &s[i]);
 		i++;			//	Aumento del contador
 	}
-}
-*/
-
-/**
- * COMPROBACION
-#include <ctype.h> 
-
-//	Convertir los caracteres pares de una cadena a minúsculas y 
-//	los caracteres impares a mayúsculas:
-
-//	La cadena original "Mi Mundo" se modificará a "Mi MuNdO".
-void	change_case(unsigned int i, char *c)
-{
-	if (i % 2 == 0)
-    	*c = tolower(*c); // Minúsculas para pares
-	else
-    	*c = toupper(*c); // Mayúsculas para impares
-}
-
-int	main(void)
-{
-	char	original[] = "Mi mUndo";
-	ft_striteri(original, change_case);
-	printf("Cambiado: %s\n", original);
-	return (0);
 }
 */

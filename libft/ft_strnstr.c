@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:32:29 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/18 10:25:39 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:10:54 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,37 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	return (0);
 }
 
-/**
- * TEORIA
+/** MAIN CON ARGUMENTOS * /
+int	main(int argc, char **argv)
+{
+	char	*haystack;
+	char	*needle;
+	size_t	len;
+	char	*ft_result;
+
+	if (argc != 4)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	haystack = argv[1];
+	needle = argv[2];
+	len = atoi(argv[3]);
+	ft_result = ft_strnstr(haystack, needle, len);
+	if (ft_result)
+		printf("ft_result:  %s\n", ft_result);
+	else
+		printf("ft_result: NULL\n");
+	return (0);
+}*/
+
+/** TEORIA RESUMEN
 char *strnstr(const char *haystack, const char *needle, size_t len);
 La función strnstr busca la primera aparición de una subcadena dentro de otra
 cadena, teniendo en cuenta un número máximo de caracteres a comparar.
 */
 
-/**
- * EXPLICACION
+/** EXPLICACION CODIGO
 #include "libft.h"						//	Es necesario para size_t "unistd.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
@@ -80,25 +102,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		i_haystack++;					//	Aumento el contador
 	}
 	return (0);							//	Devuelvo 0
-}
-*/
-
-/*
- * COMPROBACION
-int	main(void)
-{
-    const char *haystack = "Hello, world!";
-    const char *needle = "world";
-    char *result;
-
-    // Buscar la subcadena "world" en el haystack con un límite de longitud
-    result = ft_strnstr(haystack, needle, 15);
-
-    if (result)
-        printf("Se encontró la subcadena '%s' en '%s'.\n", needle, haystack);
-    else
-        printf("No se encontró la subcadena '%s' en '%s'.\n", needle, haystack);
-
-	return (0);
 }
 */

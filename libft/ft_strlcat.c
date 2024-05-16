@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 12:53:24 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/29 15:59:08 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 11:48:32 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,35 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	return (dstlen + srclen);
 }
 
-/**
- * TEORIA RESUMEN
+/** MAIN CON ARGUMENTOS * /
+int	main(int argc, char **argv)
+{
+	char	*dst;
+	char	*src;
+	size_t	dstsize;
+	size_t	i;
+
+	if (argc != 3)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	dst = argv[1];
+	src = argv[2];
+	dstsize = ft_strlen(dst);
+	i = ft_strlcat(dst, src, dstsize);
+	printf("ft_strlcat %zu \n", i);
+	return (0);
+}*/
+
+/** TEORIA RESUMEN
 size_t strlcpy(char * dst, const char * src, size_t dstsize);
 La función strlcat concatena dos cadenas de caracteres, pero con un límite de 
 tamaño para la cadena destino. Es similar a la función strcat, pero ofrece mayor
 seguridad al evitar el desbordamiento del búfer.
 */
 
-/**
- * EXPLICACION CODIGO
+/** EXPLICACION CODIGO
 #include "libft.h"			          //	Es necesario para size_t "unistd.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
@@ -70,35 +89,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	}
 	dst[dst_len + i] = '\0';			//	Cierro dst con una posicion más
 	return (dst_len + src_len);		//	Devuelvo suma tamaños dst y src
-}
-*/
-
-/**
- * MAIN CON ARGUMENTOS
-#include "libft.h"
-#include <string.h>
-
-int	main(int argc, char **argv)
-{
-	void	*dst;
-	void	*dst1;
-	void	*src;
-	size_t	dstsize;
-	size_t	i;
-
-	if (argc != 3)
-	{
-		printf("Error en el número de argumentos\n");
-		return (0);
-	}
-	dst = argv[1];
-	dst1 = argv[1];
-	src = argv[2];
-	dstsize = ft_strlen(dst);
-	i = ft_strlcat(dst, src, dstsize);
-	printf("ft_strlcat %zu %s\n", i, dst);
-	i = strlcat(dst1, src, dstsize);
-	printf("strlcat    %zu %s\n", i, dst1);
-	return (0);
 }
 */

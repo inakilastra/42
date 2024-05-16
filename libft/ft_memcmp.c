@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:23:00 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/09 11:31:50 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:02:53 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,44 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	return (0);
 }
 
-/**
- * TEORIA
+/** MAIN CON ARGUMENTOS * /
+int	main(int argc, char **argv)
+{
+	char	*s1;
+	char	*s2;
+	size_t	n;
+	int		ft_result;
+	int		std_result;
+
+	if (argc != 4)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	s1 = argv[1];
+	s2 = argv[2];
+	n = atoi(argv[3]);
+	ft_result = ft_memcmp(s1, s2, n);
+	printf("Resultado de ft_memcmp: %d\n", ft_result);
+	std_result = memcmp(s1, s2, n);
+	printf("Resultado de memcmp: %d\n", std_result);
+	if (ft_result == 0 && std_result == 0)
+		printf("Las cadenas son iguales\n");
+	else if (ft_result != std_result)
+		printf("El resultados de ft_memcmp y memcmp es diferente.\n");
+	else
+		printf("Las cadenas no son iguales\n");
+	return (0);
+}*/
+
+/** TEORIA RESUMEN
 int memcmp(const void *s1, const void *s2, size_t n);
 La función memcmp se utiliza para comparar dos bloques de memoria. En otras 
 palabras, toma dos punteros a zonas de memoria y determina si el contenido 
 de esas zonas es idéntico o no.
 */
 
-/**
- * EXPLICACION
+/** EXPLICACION CODIGO
 #include "libft.h"						//	Es necesario para size_t "unistd.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
@@ -64,28 +92,5 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		i++;							//	Aumento el contador
 	}
 	return (0);							//	Devuelvo 0
-}
-*/
-
-/*
- * COMPROBACION
-int	main(void)
-{
-    char str1[] = "Hello";
-    char str2[] = "World";
-    int result;
-
-    // Comparar los primeros 3 bytes de str1 y str2
-    result = ft_memcmp(str1, str2, 3);
-
-    if (result == 0)
-        printf("Los primeros 3 bytes de str1 y str2 son iguales.\n");
-    else if (result < 0)
-        printf("Los primeros 3 bytes de str1 son menores que los de str2.\n");
-    else
-        printf("Los primeros 3 bytes de str1 son mayores que los de str2.\n");
-
-
-	return (0);
 }
 */

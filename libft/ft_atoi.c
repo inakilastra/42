@@ -6,9 +6,11 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 10:56:48 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/29 15:24:10 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:14:16 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
@@ -37,8 +39,26 @@ int	ft_atoi(const char *str)
 	return (num * neg);
 }
 
-/**
- * TEORIA RESUMEN
+/** MAIN CON ARGUMENTOS * /
+int	main(int argc, char **argv)
+{
+	char	*str;
+	int		i;
+
+	if (argc != 2)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	str = argv[1];
+	i = ft_atoi(str);
+	printf("ft_atoi %d\n", i);
+	i = atoi(str);
+	printf("atoi    %d\n", i);
+	return (0);
+}*/
+
+/** TEORIA RESUMEN
 int atoi(const char *str);
 La función atoi (que viene del inglés "ASCII to Integer") es una función de 
 la biblioteca estándar de C (stdlib.h) que se utiliza para convertir una 
@@ -47,8 +67,7 @@ real. En otras palabras, toma una secuencia de dígitos como "1234" y la
 transforma en el número entero 1234.
 */
 
-/**
- * EXPLICACION CODIGO
+/** EXPLICACION CODIGO
 #include "libft.h"			//	Es necesario para size_t "unistd.h"
 
 //	Contador para recorrer el string str
@@ -94,28 +113,4 @@ transforma en el número entero 1234.
 //	En caso de que str no tuviese ningun caracter numerico num tiene valor 0
 //	Retorno el valor numerico con su signo correspondiente	
 	return (num * neg);
-*/
-
-/**
- * MAIN CON ARGUMENTOS
-#include "libft.h"
-#include <string.h>
-
-int	main(int argc, char **argv)
-{
-	char	*str;
-	int		i;
-
-	if (argc != 2)
-	{
-		printf("Error en el número de argumentos\n");
-		return (0);
-	}
-	str = argv[1];
-	i = ft_atoi(str);
-	printf("ft_atoi %d\n", i);
-	i = atoi(str);
-	printf("atoi    %d\n", i);
-	return (0);
-}
 */

@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 12:04:49 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/29 09:06:19 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 11:31:11 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,34 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (i);
 }
 
-/**
- * TEORIA RESUMEN
+/** MAIN CON ARGUMENTOS * /
+int	main(int argc, char **argv)
+{
+	char	*dst;
+	char	*src;
+	size_t	dstsize;
+	size_t	i;
+
+	if (argc != 3)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	dst = argv[1];
+	src = argv[2];
+	dstsize = ft_strlen(dst);
+	i = ft_strlcpy(dst, src, dstsize);
+	printf("ft_strlcpy %zu\n", i);
+	return (0);
+}*/
+
+/** TEORIA RESUMEN
 size_t strlcpy(char * restrict dst, const char * restrict src, size_t dstsize);
 La función strlcpy copia una cadena de caracteres de origen a una cadena de 
 destino, controlando el tamaño del destino para evitar desbordamientos.
 */
 
-/**
- * EXPLICACION CODIGO
+/** EXPLICACION CODIGO
 #include "libft.h"			//	Es necesario para size_t "unistd.h"
 
 
@@ -63,35 +82,5 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	i = ft_strlen(src);				//	Obtengo el tamaño con strlen
 	return (i);					//	Devuelvo tamaño contador
-}
-*/
-
-/**
- * MAIN CON ARGUMENTOS
-#include "libft.h"
-#include <string.h>
-
-int	main(int argc, char **argv)
-{
-	void	*dst;
-	void	*dst1;
-	void	*src;
-	size_t	dstsize;
-	size_t	i;
-
-	if (argc != 3)
-	{
-		printf("Error en el número de argumentos\n");
-		return (0);
-	}
-	dst = argv[1];
-	dst1 = argv[1];
-	src = argv[2];
-	dstsize = ft_strlen(dst);
-	i = fn_strlcpy(dst, src, dstsize);
-	printf("ft_strlcpy %zu %s\n", i, dst);
-	i = strlcpy(dst1, src, dstsize);
-	printf("strlcpy    %zu %s\n", i, dst1);
-	return (0);
 }
 */

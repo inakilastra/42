@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 09:25:41 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/30 11:35:07 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:09:02 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,31 @@ char	*ft_strdup(const char *s1)
 	return (dst);
 }
 
-/**
- * TEORIA RESUMEN
+/** MAIN CON ARGUMENTOS * /
+int	main(int argc, char **argv)
+{
+	char	*s1;
+	char	*dst1;
+	char	*dst2;
+
+	if (argc != 2)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	s1 = argv[1];
+	dst1 = ft_strdup(s1);
+	printf("ft_strdup vs strdup s1   %s\n", s1);
+	printf("ft_strdup Duplicada dst1 %s\n", dst1);
+	free(dst1);
+	dst2 = strdup(s1);
+	printf("strdup    Duplicada dst2 %s\n", dst2);
+	free(dst2);
+	system("leaks main");
+	return (0);
+}*/
+
+/** TEORIA RESUMEN
 char *strdup(const char *s1);
 La función strdup (del inglés "duplicate string") se utiliza para crear una 
 copia duplicada de una cadena de caracteres. En otras palabras, toma una 
@@ -35,8 +58,7 @@ cadena de caracteres existente y devuelve un puntero a una nueva cadena que
 contiene el mismo contenido.
 */
 
-/**
- * EXPLICACION CODIGO
+/** EXPLICACION CODIGO
 #include "libft.h"			//	Es necesario para size_t "unistd.h"
 
 char	*fn_strdup(const char *s1)
@@ -53,33 +75,5 @@ char	*fn_strdup(const char *s1)
     ft_memcpy(dst, s1, s1_len);
 	dst[s1_len] = '\0';             //  Cierro en la ultima posición
 	return (dst);                   //  Devulevo el puntero
-}
-*/
-
-/**
- * MAIN CON ARGUMENTOS
-#include "libft.h"
-#include <string.h>
-
-int	main(int argc, char **argv)
-{
-	char	*s1;
-	char	*dst1;
-	char	*dst2;
-	if (argc != 2)
-	{
-		printf("Error en el número de argumentos\n");
-		return (0);
-	}
-	s1 = argv[1];
-	dst1 = ft_strdup(s1);
-	printf("ft_strdup vs strdup s1   %s\n", s1);
-	printf("ft_strdup Duplicada dst1 %s\n", dst1);
-    free(dst1);
-	dst2 = strdup(s1);
-	printf("strdup    Duplicada dst2 %s\n", dst2);
-    free(dst2);
-	system("leaks main");
-	return (0);
 }
 */

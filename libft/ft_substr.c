@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 10:51:37 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/18 11:33:48 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:16:45 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,33 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (dst);
 }
 
+/** MAIN CON ARGUMENTOS * /
+int	main(int argc, char **argv)
+{
+	char	*s;
+	int		start;
+	size_t	len;
+	char	*substring;
+
+	if (argc != 4)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	s = argv[1];
+	start = ft_atoi(argv[2]);
+	len = ft_atoi(argv[3]);
+	substring = ft_substr(s, start, len);
+	if (substring)
+	{
+		printf("Original string: %s\n", s);
+		printf("Substring: %s\n", substring);
+		free(substring);
+	}
+	else
+		printf("Error: no se pudo crear la subcadena.\n");
+	return (0);
+}*/
 /**
 Nombre de función
     ft_substr
@@ -51,8 +78,7 @@ Descripción
 	máxima ’len’.
 */
 
-/**
- * EXPLICACION
+/** EXPLICACION
  #include "libft.h"						//	Es necesario para size_t "unistd.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -72,30 +98,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	//	Copio en "dst" "s" + inicio segun len + cierre
 	ft_strlcpy(dst, s + start, len + 1);
 	return (dst);						//	Devuelvo puntero "dst"
-}
-*/
-
-/*
- * COMPROBACION
-int	main(void)
-{
-    const char *s = "Hello, world!";
-    unsigned int start = 7;  // Posición de inicio para la subcadena
-    size_t len = 5;          // Longitud de la subcadena a extraer
-    char *substring = ft_substr(s, start, len);
-
-    if (substring)
-    {
-        printf("Original string: %s\n", s);
-        printf("Substring: %s\n", substring);
-
-        // Liberar la memoria asignada por ft_substr
-        free(substring);
-    }
-    else
-    {
-        printf("Error: no se pudo crear la subcadena.\n");
-    }
-	return (0);
 }
 */

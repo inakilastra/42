@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:12:27 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/18 15:25:18 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:47:32 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,30 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
+
+/** MAIN CON ARGUMENTOS * /
+int	main(int argc, char **argv)
+{
+	int		n;
+	char	*str;
+
+	if (argc != 2)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	n = ft_atoi(argv[1]);
+	str = ft_itoa(n);
+	if (str)
+	{
+		printf("Número entero: %d\n", n);
+		printf("Cadena equivalente: %s\n", str);
+		free(str);
+	}
+	else
+		printf("Error al convertir el número a cadena\n");
+	return (0);
+}*/
 
 /**
 Nombre de función
@@ -135,25 +159,5 @@ char	*ft_itoa(int n)
 		n /= 10;		//	Divido "n" entre 10 y lo guardo en "n"
 	}
 	return (str);		//	Devuelvo la cadena con el número convertido en char
-}
-*/
-
-/**
- * COMPROBACION
-int	main(void)
-{
-	int num = 12345;
-	char *str;
-
-	str = ft_itoa(num);
-
-	if (str) {
-	printf("Número entero: %d\n", num);
-	printf("Cadena equivalente: %s\n", str);
-	free(str); // Libera la memoria asignada a la cadena
-	} else {
-	printf("Error al convertir el número a cadena\n");
-	}
-	return (0);
 }
 */

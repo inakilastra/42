@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 09:44:25 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/14 15:32:02 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:59:10 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,40 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	c[i] = '\0';
 	return (c);
 }
+
+/** MAIN CON ARGUMENTOS 
+Función de mapeo para convertir caracteres a mayúsculas * /
+char	map_to_uppercase(unsigned int index, char c)
+{
+	(void)index;
+	if (c >= 'a' && c <= 'z')
+		return (c - ('a' - 'A'));
+	return (c);
+}
+
+int	main(int argc, char **argv)
+{
+	char	*s;
+	char	*mapped_str;
+
+	if (argc != 3)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	s = argv[1];
+	mapped_str = ft_strmapi(s, map_to_uppercase);
+	if (mapped_str)
+	{
+		printf("String original: \"%s\"\n", s);
+		printf("String mapeado:  \"%s\"\n", mapped_str);
+		free(mapped_str);
+	}
+	else
+		printf("Error: no se pudo aplicar .\n");
+	system("leaks main");
+	return (0);
+}*/
 
 /**
 Nombre de función
@@ -80,45 +114,5 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	c[i] = '\0';			//	Cierro
 	//	Devuelvo puntero "c" con los valores modificados según la función "f"
 	return (c);
-}
-*/
-
-/**
- * COMPROBACION
-// Función de mapeo para convertir caracteres a mayúsculas
-char map_to_uppercase(unsigned int index, char c)
-{
-    (void)index;
-	// Convertir a mayúscula si es una letra minúscula
-    if (c >= 'a' && c <= 'z')
-        return c - ('a' - 'A');
-    return c; // Mantener el carácter original
-}
-
-int	main(int argc, char **argv)
-{
-	char	*s;
-
-	if (argc != 2)
-	{
-		printf("Error en el número de argumentos\n");
-		return (0);
-	}
-	s = argv[1];
-	char *mapped_str = fn_strmapi(s, ft_toupper);
-    if (mapped_str)
-    {
-        printf("String original: \"%s\"\n", s);
-        printf("String mapeado:  \"%s\"\n", mapped_str);
-
-        // Liberar la memoria asignada por ft_strmapi
-        free(mapped_str);
-    }
-    else
-    {
-        printf("Error: no se pudo aplicar .\n");
-    }
-	system("leaks main");
-	return (0);
 }
 */

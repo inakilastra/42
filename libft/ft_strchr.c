@@ -6,9 +6,11 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:07:32 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/29 10:32:31 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 11:58:00 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -25,38 +27,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-/**
- * TEORIA RESUMEN
-char *strchr(const char *s, int c);
-La función strchr se utiliza para buscar la primera aparición de un 
-carácter específico dentro de una cadena de caracteres.
-*/
-
-/**
- * EXPLICACION CODIGO
-#include <string.h>         //	Es necesario
-char *fn_strchr(const char *s, int c)
-{
-	if (!s)					//	Si "s" es Nulo
-		return (0);			//	Devuelvo 0
-	while (*s)				// Recorro puntero "s"
-	{
-		if (*s == (char)c)	//   Si puntero "s" = a c
-			return ((char *)s); //   Devuelvo puntero "s"
-		s++;                //   Aumento posicion puntero "s"
-	}
-	if (*s == (char)c)		//	Compruebo si concide el cierre '\0'
-		return ((char *)s);	//   Devuelvo puntero "s"
-	return (0);				//   Devuelvo 0
-}
-
-*/
-
-/**
- * MAIN CON ARGUMENTOS
-#include "libft.h"
-#include <string.h>
-
+/** MAIN CON ARGUMENTOS * /
 int	main(int argc, char **argv)
 {
 	char	*s;
@@ -76,5 +47,29 @@ int	main(int argc, char **argv)
 	s1 = strchr(s, c);
 	printf("strchr    %s\n", s1);
 	return (0);
+}*/
+
+/** TEORIA RESUMEN
+char *strchr(const char *s, int c);
+La función strchr se utiliza para buscar la primera aparición de un 
+carácter específico dentro de una cadena de caracteres.
+*/
+
+/** EXPLICACION CODIGO
+#include <string.h>         //	Es necesario
+char *fn_strchr(const char *s, int c)
+{
+	if (!s)					//	Si "s" es Nulo
+		return (0);			//	Devuelvo 0
+	while (*s)				// Recorro puntero "s"
+	{
+		if (*s == (char)c)	//   Si puntero "s" = a c
+			return ((char *)s); //   Devuelvo puntero "s"
+		s++;                //   Aumento posicion puntero "s"
+	}
+	if (*s == (char)c)		//	Compruebo si concide el cierre '\0'
+		return ((char *)s);	//   Devuelvo puntero "s"
+	return (0);				//   Devuelvo 0
 }
+
 */

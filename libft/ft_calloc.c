@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 08:40:31 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/30 09:40:14 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:20:18 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,46 +28,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return (c);
 }
 
-/**
- * TEORIA RESUMEN
-void *calloc(size_t count, size_t size);
-La función calloc (contracción de "contiguous allocation") se utiliza para 
-asignar dinámicamente un bloque de memoria contiguo y rellenar cada byte de 
-la memoria asignada con el valor 0. En otras palabras, reserva memoria para 
-un número específico de elementos del mismo tipo y la inicializa a ceros.
-
- * void *malloc(size_t size);
-La función malloc (del inglés "Memory Allocation") se utiliza para solicitar 
-memoria dinámica en el montón. En otras palabras, permite reservar un bloque 
-de memoria de un tamaño específico para su uso posterior en el programa.
-*/
-
-/**
- * EXPLICACION CODIGO
-#include "libft.h"			//	Es necesario para size_t "unistd.h"
-
-void	*fn_calloc(size_t count, size_t size)
-{
-	char			*c;			//	Inicializo un puntero
-	size_t			len;		//	Inicializo un contador
-	unsigned char	*ptrc;		//	Inicializo un puntero a puntero
-
-	c = malloc(count * size);	//	Reservo memoria 
-	if (!c)						//	Si da error al reservar
-		return (0);				//	Devuelvo 0
-	len = count * size;			//	Asigno tamaño x cantidad al contador
-	ptrc = (unsigned char *)c;	//	Asigno puntero "c" a puntero "ptrc"
-	while (len--)				//	Recorro contador
-		*ptrc++ = 0;			//	Asigno 0 a cada cosición del puntero
-	return (c);					//	Devuelvo puntero "c"
-}
-*/
-
-/**
- * MAIN CON ARGUMENTOS
-#include "libft.h"
-#include <string.h>
-
+/** MAIN CON ARGUMENTOS * /
 void	fn_print(int f, size_t count, size_t size)
 {
 	int		*ptr;
@@ -108,5 +69,37 @@ int	main(int argc, char **argv)
 	fn_print(0, count, size);
 	fn_print(1, count, size);
 	return (0);
+}*/
+
+/** TEORIA RESUMEN
+void *calloc(size_t count, size_t size);
+La función calloc (contracción de "contiguous allocation") se utiliza para 
+asignar dinámicamente un bloque de memoria contiguo y rellenar cada byte de 
+la memoria asignada con el valor 0. En otras palabras, reserva memoria para 
+un número específico de elementos del mismo tipo y la inicializa a ceros.
+
+ * void *malloc(size_t size);
+La función malloc (del inglés "Memory Allocation") se utiliza para solicitar 
+memoria dinámica en el montón. En otras palabras, permite reservar un bloque 
+de memoria de un tamaño específico para su uso posterior en el programa.
+*/
+
+/** EXPLICACION CODIGO
+#include "libft.h"			//	Es necesario para size_t "unistd.h"
+
+void	*fn_calloc(size_t count, size_t size)
+{
+	char			*c;			//	Inicializo un puntero
+	size_t			len;		//	Inicializo un contador
+	unsigned char	*ptrc;		//	Inicializo un puntero a puntero
+
+	c = malloc(count * size);	//	Reservo memoria 
+	if (!c)						//	Si da error al reservar
+		return (0);				//	Devuelvo 0
+	len = count * size;			//	Asigno tamaño x cantidad al contador
+	ptrc = (unsigned char *)c;	//	Asigno puntero "c" a puntero "ptrc"
+	while (len--)				//	Recorro contador
+		*ptrc++ = 0;			//	Asigno 0 a cada cosición del puntero
+	return (c);					//	Devuelvo puntero "c"
 }
 */

@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:44:36 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/18 13:11:53 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:32:18 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,32 @@ char	*ft_strtrim(char const *s1, char const *set)
 	dst[i] = '\0';
 	return (dst);
 }
+
+/** MAIN CON ARGUMENTOS * /
+int	main(int argc, char **argv)
+{
+	char			*s1;
+	char			*set;
+	char			*str;
+
+	if (argc != 3)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	s1 = argv[1];
+	set = argv[2];
+	str = ft_strtrim(s1, set);
+	if (!str)
+		printf("Error: ft_strtrim failed\n");
+	else
+	{
+		printf("Cadena original: '%s'\n", s1);
+		printf("Cadena recortada: '%s'\n", str);
+		free(str);
+	}
+	return (0);
+}*/
 
 /**
 Nombre de función
@@ -121,26 +147,5 @@ char	*ft_strtrim(char const *s1, char const *set)
 		dst[i++] = s1[start++];	//	Asigno a la posicion "dst" la de "s1"
 	dst[i] = '\0';				//	Cierro
 	return (dst);					//	Devuelvo puntero "dst"
-}
-*/
-
-/*
- * COMPROBACION
-int	main(void)
-{
-  char *str = "   trim both sides   ";
-  char *set = " ";
-
-  // Call ft_strtrim to remove leading and trailing spaces
-  char *trimmed_str = ft_strtrim(str, set);
-
-  if (!trimmed_str) {
-    printf("Error: ft_strtrim failed\n");
-  } else {
-    printf("Original string: '%s'\n", str);
-    printf("Trimmed string: '%s'\n", trimmed_str);
-    free(trimmed_str); // Free the memory allocated by ft_strtrim
-  }
-	return (0);
 }
 */

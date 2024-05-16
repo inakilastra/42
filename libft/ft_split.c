@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:54:52 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/14 12:50:45 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:37:34 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,34 @@ char	**ft_split(const char *s, char c)
 	}
 	return (new_str);
 }
+
+/** MAIN CON ARGUMENTOS * /
+int	main(int argc, char **argv)
+{
+	char			*s;
+	char			c;
+	char			**str;
+	int				i;
+
+	i = 0;
+	if (argc != 3)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	s = argv[1];
+	c = argv[2][0];
+	str = ft_split(s, c);
+	printf("ft_split s: %s c: %c\n", s, c);
+	while (str[i] != NULL)
+	{
+		printf("str[%d]: %s\n", i, str[i]);
+		i++;
+	}
+	printf("\n");
+	system("leaks main");
+	return (0);
+}*/
 
 /**
 Nombre de función
@@ -223,36 +251,5 @@ char	**ft_split(const char *s, char c)
 		return (NULL);	//	Devuelvo NULL
 	}
 	return (new_str);	//	Devuelvo el array "new_str"
-}
-*/
-
-/*
- * MAIN CON ARGUMENTOS
-int	main(int argc, char **argv)
-{
-	char			*s;
-	char			c;
-	char			**str;
-	int				i;
-
-	i = 0;
-	if (argc != 3)
-	{
-		printf("Error en el número de argumentos\n");
-		return (0);
-	}
-	s = argv[1];
-	c = argv[2][0];
-	str = fn_split(s, c);
-	printf("ft_split s: %s c: %c\n", s, c);
-	//printf("str: %s\n", *str);
-	while (str[i] != NULL) 
-	{
-    	printf("str[%d]: %s\n", i, str[i]);
-    	i++;
-	}
-	printf("\n");
-	system("leaks main");
-	return (0);
 }
 */

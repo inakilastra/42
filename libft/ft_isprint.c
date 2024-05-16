@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:30:18 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/15 16:45:13 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 09:24:27 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 		printf("isprint    es caracter imprimible\n");
 	return (0);
 }*/
+
 /** TEORIA
 int isprint(int c);
 La función isprint se utiliza para verificar si un carácter dado es un 

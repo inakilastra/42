@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:29:10 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/29 11:54:30 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:01:27 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,41 +29,7 @@ char	*ft_strrchr(const char *s, int c)
 	return (NULL);
 }
 
-/**
- * TEORIA RESUMEN
-char *strrchr(const char *s, int c);
-La función strrchr se utiliza para encontrar la última aparición de un 
-carácter dentro de una cadena de caracteres. Es una función muy útil para 
-trabajar con cadenas y extraer información específica.
-*/
-
-/**
- * EXPLICACION CODIGO
-#include <string.h>           //	Es necesario 
-char	*ft_strrchr(const char *s, int c)
-{
-	int	i;                  //	Inicializo contador
-
-	
-	if (s)    			//	Si "s" no es nulo
-     {
-          i = ft_strlen(s);	//	Asigno contador con tamaño de "s"
-		while (i >= 0)      //   Recorro hasta contador 0
-		{
-			if (s[i] == (char)c)     //   Si puntero "s" y "c" son iguales
-				return ((char *)&s[i]); //    Devuelvo puntero
-			i--;           //   Disminuyo contador
-		}
-	}
-	return (NULL);           // Devulvo NULL
-}
-*/
-
-/**
- * MAIN CON ARGUMENTOS
-#include "libft.h"
-#include <string.h>
-
+/** MAIN CON ARGUMENTOS * /
 int	main(int argc, char **argv)
 {
 	char	*s;
@@ -83,5 +49,32 @@ int	main(int argc, char **argv)
 	s1 = strchr(s1, c);
 	printf("strrchr    %s\n", s1);
 	return (0);
+}*/
+
+/** TEORIA RESUMEN
+char *strrchr(const char *s, int c);
+La función strrchr se utiliza para encontrar la última aparición de un 
+carácter dentro de una cadena de caracteres. Es una función muy útil para 
+trabajar con cadenas y extraer información específica.
+*/
+
+/** EXPLICACION CODIGO
+#include <string.h>           //	Es necesario 
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;                  //	Inicializo contador
+
+	
+	if (s)    			//	Si "s" no es nulo
+     {
+          i = ft_strlen(s);	//	Asigno contador con tamaño de "s"
+		while (i >= 0)      //   Recorro hasta contador 0
+		{
+			if (s[i] == (char)c)     //   Si puntero "s" y "c" son iguales
+				return ((char *)&s[i]); //    Devuelvo puntero
+			i--;           //   Disminuyo contador
+		}
+	}
+	return (NULL);           // Devulvo NULL
 }
 */
