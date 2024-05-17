@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:03:33 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/23 16:00:54 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/17 09:21:29 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,29 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
+
+/** MAIN CON ARGUMENTOS  * /
+int	main(int argc, char **argv)
+{
+	char	*str;
+	int		fd;
+
+	if (argc != 3)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	str = argv[1];
+	fd = atoi(argv[2]);
+	if (fd < 0)
+	{
+		printf("El file descriptor debe ser un número positivo.\n");
+		return (1);
+	}
+	ft_putstr_fd(str, fd);
+	printf("\n");
+	return (0);
+}*/
 
 /**
 Nombre de función
@@ -66,18 +89,4 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-*/
-
-/**
- * COMPROBACION
-int	main(void)
-{
- char *cadena = "Hola, mundo!";
-  int fd = 1; // fd = 1 normalmente apunta a la salida estándar (consola)
-
-  ft_putstr_fd(cadena, fd);
-  printf("\n"); // Imprime un salto de línea adicional usando printf
-
-	return (0);
-}
 */

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 12:49:34 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/23 12:53:51 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/17 10:11:30 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,45 +51,5 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	//	lista "*lst"
 	new->next = *lst;
 	*lst = new;				//	Asigno el puntero "lst" al nuevo elemento "new"
-}
-*/
-
-/**
- * COMPROBACION
-int	main(void)
-{
-    t_list *node1 = ft_lstnew("First node");
-    t_list *node2 = ft_lstnew("Second node");
-
-    if (!node1 || !node2)
-    {
-        printf("Error: no se pudo crear el nodo.\n");
-        return 1;
-    }
-
-    t_list *list = NULL; // Inicializamos la lista vacía
-
-    // Agregar el nodo2 al frente de la lista
-    ft_lstadd_front(&list, node2);
-
-    // Agregar el nodo1 al frente de la lista
-    ft_lstadd_front(&list, node1);
-
-    // Imprimir los contenidos de la lista para verificar el orden
-    t_list *current = list;
-    while (current)
-    {
-        printf("Content: %s\n", (char *)current->content);
-        current = current->next;
-    }
-
-    // Liberar la memoria asignada para la lista y los nodos
-    while (list)
-    {
-        current = list->next;
-        free(list);
-        list = current;
-    }
-	return (0);
 }
 */

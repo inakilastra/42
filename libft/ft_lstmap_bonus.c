@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:57:29 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/15 11:27:26 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/17 10:13:20 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,4 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (new_lst);       //  Devuelvo la nueva lista "new_lst"
 }
-*/
-
-/**
- * COMPROBACION
-
 */

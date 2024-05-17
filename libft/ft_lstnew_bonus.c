@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:32:46 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/15 11:23:12 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/17 10:11:43 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,5 @@ t_list	*ft_lstnew(void *content)
 	new->content = content;
 	new->next = NULL;		//	Asigno NULL al campo next del nuevo nodo
 	return (new);			//	Devuelvo el puntero "new"		
-}
-*/
-
-/**
- * COMPROBACION
-int	main(void)
-{
-    // Crear un nuevo nodo
-    t_list *node = ft_lstnew("Hello, world! Ok");
-
-    if (node)
-        printf("Content: %s\n", (char *)node->content);
-    else
-    	printf("Error: no se pudo crear el nuevo nodo.\n");
-	free(node);
-	return (0);
 }
 */

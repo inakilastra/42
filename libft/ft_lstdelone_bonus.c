@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:33:32 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/23 12:54:03 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/17 10:12:39 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,62 +50,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 		return ;            //  Salgo de la función
 	del(lst->content);      //  Borro el contenido del nodo
 	free(lst);              //  Libero la mem de "lst"
-}
-*/
-
-/**
- * COMPROBACION
-// Función para eliminar un entero
-void delete_int(void *content)
-{
-    int *num = (int *)content;
-    printf("Eliminando el número: %d\n", *num);
-    free(num);
-}
-
-// Función para imprimir el contenido de un nodo
-void print_node(t_list *node)
-{
-    int *num = (int *)node->content;
-    printf("Contenido del nodo: %d\n", *num);
-}
-
-int main(void)
-{
-    // Crear varios nodos con contenido dinámico (números enteros)
-    t_list *head = NULL;
-    for (int i = 0; i < 5; i++)
-    {
-        int *num = (int *)malloc(sizeof(int));
-        *num = i * 10;
-        t_list *node = ft_lstnew(num);
-        ft_lstadd_back(&head, node);
-    }
-
-    // Imprimir contenido de los nodos antes de eliminarlos
-    printf("Antes de eliminar los nodos:\n");
-    t_list *curr = head;
-    while (curr)
-    {
-        print_node(curr);
-        curr = curr->next;
-    }
-
-    // Eliminar todos los nodos usando ft_lstdelone
-    while (head)
-    {
-        ft_lstdelone(head, &delete_int);
-        head = head->next;
-    }
-
-    // Imprimir contenido de los nodos después de eliminarlos
-    printf("\nDespués de eliminar los nodos:\n");
-    curr = head; // head es NULL, no hay nodos restantes
-    while (curr)
-    {
-        print_node(curr);
-        curr = curr->next;
-    }
-	return (0);
 }
 */

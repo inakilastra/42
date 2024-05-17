@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:57:13 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/23 12:53:41 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/17 10:12:03 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,46 +59,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;			//	Asigno "new" al puntero "lst"
 	else
 		last_nodo->next = new;	// Agrego el nuevo nodo "new" 
-}
-*/
-
-/**
- * COMPROBACION
-int	main(void)
-{
-    // Crear algunos nodos para la lista
-    t_list *node1 = ft_lstnew("First node");
-    t_list *node2 = ft_lstnew("Second node");
-    t_list *node3 = ft_lstnew("Third node");
-
-    if (!node1 || !node2 || !node3)
-    {
-        printf("Error: no se pudo crear el nodo.\n");
-        return 1;
-    }
-
-    // Lista inicialmente vacía
-    t_list *list = NULL;
-
-    // Agregar nodos a la lista
-    ft_lstadd_back(&list, node1);
-    ft_lstadd_back(&list, node2);
-    ft_lstadd_back(&list, node3);
-
-    // Imprimir la lista para verificar
-    printf("Lista después de agregar nodos:\n");
-	// Imprimir los contenidos de la lista para verificar el orden
-    t_list *current = list;
-    while (current)
-    {
-        printf("Content: %s\n", (char *)current->content);
-        current = current->next;
-    }
-
-    // Liberar la memoria asignada para la lista y los nodos
-    free(node1);
-    free(node2);
-    free(node3);
-	return (0);
 }
 */

@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:03:45 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/15 11:21:28 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/17 10:12:23 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,61 +67,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		nodo_actual = nodo_prox;
 	}
 	*lst = NULL;			//	Asigno NULL al puntero "lst"
-}
-*/
-
-/**
- * COMPROBACION
-// Función para eliminar un entero
-void delete_int(void *content)
-{
-    int *num = (int *)content;
-    printf("Eliminando el número: %d\n", *num);
-    free(num);
-}
-
-// Función para imprimir el contenido de un nodo
-void print_node(t_list *node)
-{
-    int *num = (int *)node->content;
-    printf("Contenido del nodo: %d\n", *num);
-}
-
-int main(void)
-{
-    // Crear una lista con varios nodos
-    t_list *head = NULL;
-    for (int i = 0; i < 5; i++)
-    {
-        int *num = (int *)malloc(sizeof(int));
-        *num = i * 10;
-        t_list *node = ft_lstnew(num);
-        ft_lstadd_back(&head, node);
-    }
-
-    // Mostrar contenido de los nodos antes de limpiar la lista
-    printf("Antes de limpiar la lista:\n");
-    t_list *curr = head;
-    while (curr)
-    {
-        print_node(curr);
-        curr = curr->next;
-    }
-
-    // Limpiar la lista utilizando ft_lstclear
-    ft_lstclear(&head, &delete_int);
-
-    // Mostrar que la lista está vacía después de limpiarla
-    printf("\nDespués de limpiar la lista:\n");
-    if (head == NULL)
-    {
-        printf("La lista está vacía\n");
-    }
-    else
-    {
-        printf("La lista no está vacía\n");
-    }
-
-	return (0);
 }
 */

@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:31:40 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/23 16:01:13 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/17 09:25:30 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,28 @@ void	ft_putendl_fd(char *s, int fd)
 		ft_putchar_fd('\n', fd);
 	}
 }
+
+/** MAIN CON ARGUMENTOS  * /
+int	main(int argc, char **argv)
+{
+	char	*str;
+	int		fd;
+
+	if (argc != 3)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	str = argv[1];
+	fd = atoi(argv[2]);
+	if (fd < 0)
+	{
+		printf("El file descriptor debe ser un número positivo.\n");
+		return (1);
+	}
+	ft_putendl_fd(str, fd);
+	return (0);
+}*/
 
 /**
 Nombre de función
@@ -52,17 +74,5 @@ void	ft_putendl_fd(char *s, int fd)
         //  Envía el caracter ’\n’ al file descriptor especificado.
 		ft_putchar_fd('\n', fd);
 	}
-}
-*/
-
-/**
- * COMPROBACION
-int	main(void)
-{
-	char *message = "Hello, world!";
-	int fd = 1; // Standard output (stdout)
-
-	ft_putendl_fd(message, fd);
-	return (0);
 }
 */

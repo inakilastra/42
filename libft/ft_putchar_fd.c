@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:45:11 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/04/23 16:01:24 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/17 09:15:27 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,28 @@ void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
+
+/** MAIN CON ARGUMENTOS  * /
+int	main(int argc, char **argv)
+{
+	char	c;
+	int		fd;
+
+	if (argc != 3)
+	{
+		printf("Error en el número de argumentos\n");
+		return (0);
+	}
+	c = argv[1][0];
+	fd = atoi(argv[2]);
+	if (fd < 0)
+	{
+		printf("El file descriptor debe ser un número positivo.\n");
+		return (1);
+	}
+	ft_putchar_fd(c, fd);
+	return (0);
+}*/
 
 /**
 Nombre de función
@@ -54,16 +76,4 @@ void	ft_putchar_fd(char c, int fd)
 //	y un descriptor de archivo como argumentos.
 //	Utiliza la función write para imprimir el 
 //	carácter en el descriptor de archivo especificado.
-*/
-
-/*
- * COMPROBACION
-int	main(void)
-{
-  char c = 'a';
-  int fd = 1; // Salida estándar (stdout)
-
-  ft_putchar_fd(c, fd);
-	return (0);
-}
 */
