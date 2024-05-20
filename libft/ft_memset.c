@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 10:59:47 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/16 09:31:01 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/20 08:26:41 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ void	*ft_memset(void *b, int c, size_t len)
 {
 	unsigned char	*ptrb;
 
-	if (!b || !c)
-		return (0);
-	ptrb = (unsigned char *)b;
-	while (len--)
-		*ptrb++ = (unsigned char)c;
+	ptrb = b;
+	while (len > 0)
+	{
+		*ptrb = (unsigned char)c;
+		ptrb++;
+		len--;
+	}	
 	return (b);
 }
 

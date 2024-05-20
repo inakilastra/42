@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:41:29 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/16 09:37:47 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:17:40 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@ void	ft_bzero(void *s, size_t n)
 {
 	char	*ptrs;
 
-	if (n > 1)
+	ptrs = (char *)s;
+	while (n > 0)
 	{
-		ptrs = (char *)s;
-		while (n--)
-			*ptrs++ = 0;
+		*ptrs = 0;
+		ptrs++;
+		n--;
 	}
 }
 
-/** MAIN CON ARGUMENTOS * /
+/** MAIN CON ARGUMENTOS */
 int	main(int argc, char **argv)
 {
 	char	*s;
@@ -44,7 +45,7 @@ int	main(int argc, char **argv)
 	bzero(s1, n);
 	printf("bzero    %s\n", s1);
 	return (0);
-}*/
+}
 
 /** TEORIA RESUMEN
 void bzero(void *s, size_t n);

@@ -6,38 +6,58 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:54:52 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/16 15:37:34 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/20 09:02:26 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	free_mem(char **s, int size)
+static char	**free_mem(char const **s, int size)
 {
-	while (size >= 0)
+	while (size > 0)
 	{
-		free(s[size]);
+		free((void *)s[size]);
 		size--;
 	}
-	return (-1);
+	free(s);
+	return (NULL);
 }
 
 static int	count_words(const char *s, char c)
 {
 	int	i;
 	int	words;
+	int	is_c;
 
-	words = 0;
 	i = 0;
-	if (c == '\0')
-		return (1);
+	words = 0;
+	is_c = 1;
+	if (s[i] == '\0')
+		return (0);	
 	while (s[i] != '\0')
 	{
-		if ((s[i] != c) && (s[i + 1] == c || s[i + 1] == '\0'))
+		if (s[i] == c)
+			is_c = 1;
+		else if (is_c == 1)
+		{
+			is_c = 0;
 			words++;
+		}
 		i++;
 	}
 	return (words);
+}
+static int	count_chars(char const *s, char c, int i)
+{
+	int	chars;
+
+	chars = 0;
+	while (s[i] != c && s[i] != '\0')
+	{
+		chars++;
+		i++;
+	}
+	return (chars);
 }
 
 static void	write_word(char *dst, const char *src, char c)
@@ -83,8 +103,8 @@ static int	str_split(char **split, const char *s, char c)
 
 char	**ft_split(const char *s, char c)
 {
-	char	**new_str;
-	int		words;
+	char			**new_str;
+	unsigned int	words;
 
 	if (!s)
 		return (NULL);
