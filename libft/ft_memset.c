@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 10:59:47 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/20 08:26:41 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:11:16 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memset(void *b, int c, size_t len)
 		*ptrb = (unsigned char)c;
 		ptrb++;
 		len--;
-	}	
+	}
 	return (b);
 }
 

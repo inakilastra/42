@@ -6,119 +6,90 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:54:52 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/20 09:02:26 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:15:06 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**free_mem(char const **s, int size)
+static void	free_mem(char **s)
 {
-	while (size > 0)
+	int	i;
+
+	i = 0;
+	while (s[i])
 	{
-		free((void *)s[size]);
-		size--;
+		free(s[i]);
+		i++;
 	}
 	free(s);
-	return (NULL);
 }
 
 static int	count_words(const char *s, char c)
 {
 	int	i;
 	int	words;
-	int	is_c;
 
 	i = 0;
 	words = 0;
-	is_c = 1;
-	if (s[i] == '\0')
-		return (0);	
 	while (s[i] != '\0')
 	{
-		if (s[i] == c)
-			is_c = 1;
-		else if (is_c == 1)
+		if (s[i] != c)
 		{
-			is_c = 0;
 			words++;
+			while (s[i] != '\0' && s[i] != c)
+				i++;
 		}
-		i++;
+		else
+			i++;
 	}
 	return (words);
 }
-static int	count_chars(char const *s, char c, int i)
+
+static char	*write_word(const char *s, int n)
 {
-	int	chars;
+	char	*dst;
+	int		i;
 
-	chars = 0;
-	while (s[i] != c && s[i] != '\0')
-	{
-		chars++;
-		i++;
-	}
-	return (chars);
-}
-
-static void	write_word(char *dst, const char *src, char c)
-{
-	int	i;
-
+	dst = malloc(sizeof(char) * (n + 1));
+	if (!dst)
+		return (NULL);
 	i = 0;
-	while (src[i] != c && src[i] != '\0')
+	while (i < n)
 	{
-		dst[i] = src[i];
+		dst[i] = s[i];
 		i++;
 	}
 	dst[i] = '\0';
-}
-
-static int	str_split(char **split, const char *s, char c)
-{
-	int		i;
-	int		j;
-	int		word;
-
-	word = 0;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			j = 0;
-			while (s[i + j] != c && s[i + j] != '\0')
-				j++;
-			split[word] = (char *)malloc(sizeof(char) * (j + 1));
-			if (split[word] == NULL)
-				return (free_mem(split, word - 1));
-			write_word(split[word], s + i, c);
-			i += j;
-			word++;
-		}
-	}
-	return (0);
+	return (dst);
 }
 
 char	**ft_split(const char *s, char c)
 {
-	char			**new_str;
-	unsigned int	words;
+	int		i;
+	int		j;
+	char	**dst;
 
-	if (!s)
+	dst = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
+	if (!dst || !s)
 		return (NULL);
-	words = count_words(s, c);
-	new_str = (char **)malloc(sizeof(char *) * (words + 1));
-	if (!new_str)
-		return (NULL);
-	new_str[words] = NULL;
-	if (str_split(new_str, s, c) == -1)
+	i = 0;
+	while (*s && *s == c)
+		s ++;
+	while (*s)
 	{
-		free(new_str);
-		return (NULL);
+		j = 0;
+		while (s[j] && s[j] != c)
+			j ++;
+		dst[i] = write_word(s, j);
+		if (dst[i++] == NULL)
+			return (free_mem(dst), NULL);
+		s += j;
+		while (*s && *s == c)
+			s ++;
 	}
-	return (new_str);
+	dst[i] = NULL;
+	return (dst);
 }
 
 /** MAIN CON ARGUMENTOS * /

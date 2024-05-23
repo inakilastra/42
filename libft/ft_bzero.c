@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:41:29 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/20 14:17:40 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/23 10:55:14 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,10 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char	*ptrs;
-
-	ptrs = (char *)s;
-	while (n > 0)
-	{
-		*ptrs = 0;
-		ptrs++;
-		n--;
-	}
+	ft_memset(s, 0, n);
 }
 
-/** MAIN CON ARGUMENTOS */
+/** MAIN CON ARGUMENTOS * /
 int	main(int argc, char **argv)
 {
 	char	*s;
@@ -41,11 +33,19 @@ int	main(int argc, char **argv)
 	s1 = argv[1];
 	n = ft_atoi(argv[2]);
 	ft_bzero(s, n);
-	printf("ft_bzero %s\n", s);
+	printf("ft_bzero %c\n", s[0]);
+	printf("ft_bzero %c\n", s[1]);	
+	printf("ft_bzero %c\n", s[2]);
+	printf("ft_bzero %c\n", s[3]);
+	printf("ft_bzero %c\n", s[4]);		
 	bzero(s1, n);
-	printf("bzero    %s\n", s1);
+	printf("bzero    %c\n", s1[0]);
+	printf("bzero    %c\n", s1[1]);	
+	printf("bzero    %c\n", s1[2]);
+	printf("bzero    %c\n", s1[3]);
+	printf("bzero    %c\n", s1[4]);	
 	return (0);
-}
+}*/
 
 /** TEORIA RESUMEN
 void bzero(void *s, size_t n);
