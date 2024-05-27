@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:54:52 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/23 16:26:05 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:46:46 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static int	count_words(const char *s, char c)
 /**
  * MODIFICAR CON FT_STRLCPY
 */
+
 static char	*write_word(const char *s, int n)
 {
 	char	*dst;

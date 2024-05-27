@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:48:02 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/27 10:52:20 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:59:46 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,12 @@ int	main(int argc, char **argv)
 	int			i;
 	int 		result;
 	int 		norminette;
-	const char *color;
+	const char 	*color;
+	char		*fn;
+	char		bonus;
+
 	
-	if (argc != 2)
+	if (argc < 1 && argc > 4)
 	{
 		printf("\033[0;91m\nError en el número de argumentos\n");
 		printf("\033[0;92mPrueba con: ./main \"Tu Nombre\"\n\n");
@@ -110,131 +113,496 @@ int	main(int argc, char **argv)
 	color = get_color(6);
 	printf("\033[H\033[J");
 	printf("%s******************************************************\n", color);
-	printf("%s******************************************************\n", color);
+	printf("%s***************MAIN COMPLETADO************************\n", color);
 	printf("%s******************************************************\n", color);
 	c = argv[1];
-	
-	
-/* 	i = 1;//fn_isprint(c);
+	if (argv[2] != NULL && argv[2][0] == 'n')
+		bonus = 'n';
+	else
+		bonus = 's';		
+	(void)bonus;	
+	if (argv[3] != NULL)
+		fn = argv[3];
+	else
+		fn = "X";
+
+//ft_lstmap_bonus.c
+//ft_lstiter_bonus.c
+//ft_lstclear_bonus.c
+//ft_lstdelone_bonus.c
+//ft_lstadd_back_bonus.c
+//ft_lstlast_bonus.c
+//ft_lstsize_bonus.c
+//ft_lstadd_front_bonus.c
+//ft_lstnew_bonus.c
+//ft_putnbr_fd.c
+//ft_putendl_fd.c
+//ft_putstr_fd.c
+//ft_putchar_fd.c
+//ft_striteri.c
+//ft_strmapi.c
+//ft_itoa.c
+//ft_split.c
+//ft_strtrim.c
+//ft_strjoin.c
+//ft_substr.c
+//ft_strdup.c
+//ft_calloc.c
+//ft_atoi.c
+//ft_strnstr.c
+//ft_memcmp.c
+//ft_memchr.c
+//ft_strncmp.c
+//ft_strrchr.c
+//ft_strchr.c
+//ft_tolower.c
+//ft_toupper.c
+//ft_strlcat.c
+//ft_strlcpy.c
+//ft_memmove.c
+//ft_memcpy.c
+	char src1[] = "Copio esta frase.";
+	char dst1[30];
+	i = 2;
+	ft_memcpy(dst1,src1,strlen(src1) +1 );
+	if (ft_strncmp(dst1, src1, strlen(src1)) != 0)
+		i = 1;
+	color = get_color(i);
+	printf("%sft_memcpy  vs memcpy\n", color);		
+	if (i == 1 || ft_strncmp(fn, "memcpy", 6) == 0)
+	{		
+		printf("%s\tft_memcpy Copio la memoria src1: \"%s\" en dst1: \"%s\"\n", color, src1, dst1);
+		printf("%s\t   memcpy Copio el memoria src1: \"%s\" en dst1: \"%s\"\n", color, src1, dst1);
+	}
+//fn_bzero(c);
+	char 	str10[100] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char 	str11[100] = "                    UVWXYZ";
+	i = 2;
+	ft_bzero(str10, 20);
+	for (int j = 20; j < 100; j++) 
+	{
+		if (str10[j] != str11[j])
+			i = 1;
+	}  
+	color = get_color(i);
+	printf("%sft_bzero   vs bzero\n", color);	
+	if (i == 1 || ft_strncmp(fn, "bzero", 5) == 0)
+	{
+		char str3[100] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		ft_bzero(str3, 20);
+		printf("%s\tft_bzero ABCDEFGHIJKLMNOPQRSTUVWXYZ pasa a ser ", color);
+		for (int j = 0; j < 100; j++) 
+		{
+			printf("%s%c", color, str3[j]);
+		}
+		printf("\n");
+		char str4[100] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		ft_bzero(str4, 20);
+		printf("%s\t   bzero ABCDEFGHIJKLMNOPQRSTUVWXYZ pasa a ser ", color);
+		for (int j = 0; j < 100; j++) 
+		{
+			printf("%s%c", color, str4[j]);
+		}
+		printf("\n");
+		printf("%s******************************************************\n", color);
+	}
+//fn_memset(c);	
+	char 	str1[10] = "Hola Mundo";
+	ft_memset(str1, 'X', 5);
+	if (strstr(str1, "XXXXXMundo") == NULL)
+		i = 1;
+	else
+		i = 2;
+	color = get_color(i);
+	printf("%sft_memset  vs memset\n", color);		
+	if (i == 1)
+	{
+		char strA[10] = "Hola Mundo";
+		ft_memset(strA, 'X', 5);
+		printf("%s\tft_memset \"Hola Mundo\", 'X', 5 --> %s\n", color, strA);
+		char strB[10] = "Hola Mundo";
+		memset(strB, 'X', 5);	
+		printf("%s\t   memset \"Hola Mundo\", 'X', 5 --> %s\n", color, strB);
+		printf("%s******************************************************\n", color);
+	}
+//fn_strlen(c);	
+	i = 1;
+	if (ft_strlen("Hola Mundo") == 10)
+		i = 2;
+	color = get_color(i);
+	printf("%sft_strlen  vs strlen\n", color);
+	if (i == 1)
+	{
+		printf("%s\tft_strlen \"Hola Mundo\" --> %ld\n", color, ft_strlen("Hola Mundo"));	
+		printf("%s\tstrlen \"Hola Mundo\" --> %ld\n", color, strlen("Hola Mundo"));
+		printf("%s******************************************************\n", color);
+	}	
+//fn_isprint(c);	
+	i = 1;
 	if (ft_isprint('A') == 1 && ft_isprint('Z') == 1 
 		&& ft_isprint('a') == 1 && ft_isprint('z') == 1 
 		&& ft_isprint('0') == 1 && ft_isprint('9') == 1
 		&& ft_isprint(0) == 0)
 		i = 2;
 	color = get_color(i);
-	printf("%s\n****************************** ft_isprint vs isprint\n", WHITE);
-	printf("%s\t%s Tu resultado tiene que ser 0 ó 1\n", color, c);
-	printf("%sDe la 'A' a la 'Z' %d-%d\n", color, ft_isprint('A'), ft_isprint('Z'));	
-	printf("%sDe la 'a' a la 'z' %d-%d\n", color, ft_isprint('a'), ft_isprint('z'));	
-	printf("%sDel 0 al 9 %d-%d\n", color, ft_isprint('0'), ft_isprint('9'));	
-	printf("%sCaracter NULL %d\n", color, ft_isprint(0));	
-	printf("%s\tSe esperaba 0 o mayor que 0 (8)\n", color);
-	printf("%sDe la 'A' a la 'Z' %d-%d\n", color, isprint('A'), isprint('Z'));	
-	printf("%sDe la 'a' a la 'z' %d-%d\n", color, isprint('a'), isprint('z'));	
-	printf("%sDel 0 al 9 %d-%d\n", color, isprint('0'), isprint('9'));	
-	printf("%sCaracter NULL %d\n", color, isprint(0));	
-	printf("%s******************************************************\n", color); */		
-/*  	i = 1;//fn_isascii(c);
+	printf("%sft_isprint vs isprint\n", color);
+	if (i == 1)
+	{
+		printf("%s\tft_isprint 'A' --> %d\n", color, ft_isprint('A'));	
+		printf("%s\tft_isprint 'a' --> %d\n", color, ft_isprint('a'));	
+		printf("%s\tft_isprint '0' --> %d\n", color, ft_isprint('0'));	
+		printf("%s\tft_isprint NULL --> %d\n", color, ft_isprint(0));	
+		printf("%s\tft_isprint '!' --> %d\n", color, ft_isprint('!'));
+		printf("%s\tisprint 'A' --> %d\n", color, isprint('A'));	
+		printf("%s\tisprint 'a' --> %d\n", color, isprint('a'));	
+		printf("%s\tisprint '0' --> %d\n", color, isprint('0'));	
+		printf("%s\tisprint NULL --> %d\n", color, isprint(0));	
+		printf("%s\tisprint '!' --> %d\n", color, isprint('!'));
+		printf("%s******************************************************\n", color);
+	}	
+//fn_isascii(c);
+	i = 1;
 	if (ft_isascii('A') == 1 && ft_isascii('Z') == 1 
 		&& ft_isascii('a') == 1 && ft_isascii('z') == 1 
-		&& ft_isascii('0') == 1 && ft_isascii('9') == 1)
-		//&& ft_isascii(128) == 0)
+		&& ft_isascii('0') == 1 && ft_isascii('9') == 1
+		&& ft_isascii(128) == 0)
 		i = 2;
 	color = get_color(i);
-	printf("%s\nLa versión ft_isascii de %s vs isascii\n", WHITE, c);
-	printf("%sft_isascii 'A' --> %d\n", color, ft_isascii('A'));
-	printf("%sft_isascii 'Z' --> %d\n", color, ft_isascii('Z'));
-	printf("%sft_isascii 'a' --> %d\n", color, ft_isascii('a'));
-	printf("%sft_isascii 'z' --> %d\n", color, ft_isascii('z'));
-	printf("%sft_isascii '0' --> %d\n", color, ft_isascii('0'));
-	printf("%sft_isascii '9' --> %d\n", color, ft_isascii('9'));
-	printf("%sft_isascii 128 --> %d\n", color, ft_isascii(128));
-	printf("%sisascii 'A' --> %d\n", color, isascii('A'));
-	printf("%sisascii 'Z' --> %d\n", color, isascii('Z'));
-	printf("%sisascii 'a' --> %d\n", color, isascii('a'));
-	printf("%sisascii 'z' --> %d\n", color, isascii('z'));
-	printf("%sisascii '0' --> %d\n", color, isascii('0'));
-	printf("%sisascii '9' --> %d\n", color, isascii('9'));
-	printf("%sisascii 128 --> %d\n", color, isascii(128));
-	printf("%s******************************************************\n", color); */
-	i = 1;//fn_isalnum(c);
+	printf("%sft_isascii vs isascii\n", color);
+	if (i == 1 || ft_strncmp(fn, "isascii", 7) == 0)
+	{
+		printf("%s\tft_isascii 'A' --> %d\n", color, ft_isascii('A'));
+		printf("%s\tft_isascii '0' --> %d\n", color, ft_isascii('0'));
+		printf("%s\tft_isascii 128 --> %d\n", color, ft_isascii(128));
+		printf("%s\tisascii 'A' --> %d\n", color, isascii('A'));
+		printf("%s\tisascii '0' --> %d\n", color, isascii('0'));
+		printf("%s\tisascii 128 --> %d\n", color, isascii(128));
+		printf("%s******************************************************\n", color);
+	}
+//fn_isalnum(c);	
+	i = 1;
 	if (ft_isalnum('A') == 1 && ft_isalnum('Z') == 1 
 		&& ft_isalnum('a') == 1 && ft_isalnum('z') == 1 
 		&& ft_isalnum('0') == 1 && ft_isalnum('9') == 1
 		&& ft_isalnum('+') == 0)
 		i = 2;
 	color = get_color(i);
-	printf("%s\nLa versión ft_isalnum de %s vs isalnum\n", WHITE, c);
-	printf("%sft_isalnum 'A' --> %d\n", color, ft_isalnum('A'));	
-	printf("%sft_isalnum 'Z' --> %d\n", color, ft_isalnum('Z'));
-	printf("%sft_isalnum 'a' --> %d\n", color, ft_isalnum('a'));	
-	printf("%sft_isalnum 'z' --> %d\n", color, ft_isalnum('z'));	
-	printf("%sft_isalnum '0' --> %d\n", color, ft_isalnum('0'));
-	printf("%sft_isalnum '9' --> %d\n", color, ft_isalnum('9'));
-	printf("%sft_isalnum '+' --> %d\n", color, ft_isalnum('+'));
-	printf("%sisalnum 'A' --> %d\n", color, isalnum('A'));	
-	printf("%sisalnum 'Z' --> %d\n", color, isalnum('Z'));
-	printf("%sisalnum 'a' --> %d\n", color, isalnum('a'));	
-	printf("%sisalnum 'z' --> %d\n", color, isalnum('z'));	
-	printf("%sisalnum '0' --> %d\n", color, isalnum('0'));
-	printf("%sisalnum '9' --> %d\n", color, isalnum('9'));
-	printf("%sisalnum '+' --> %d\n", color, isalnum('+'));
-	printf("%s******************************************************\n", color);	
-	i = 1;//fn_isdigit(c);
+	printf("%sft_isalnum vs isalnum\n", color);
+	if (i == 1 || ft_strncmp(fn, "isalnum", 7) == 0)
+	{	
+		printf("%s\tft_isalnum 'A' --> %d\n", color, ft_isalnum('A'));	
+		printf("%s\tft_isalnum 'Z' --> %d\n", color, ft_isalnum('Z'));
+		printf("%s\tft_isalnum 'a' --> %d\n", color, ft_isalnum('a'));	
+		printf("%s\tft_isalnum 'z' --> %d\n", color, ft_isalnum('z'));	
+		printf("%s\tft_isalnum '0' --> %d\n", color, ft_isalnum('0'));
+		printf("%s\tft_isalnum '9' --> %d\n", color, ft_isalnum('9'));
+		printf("%s\tft_isalnum '+' --> %d\n", color, ft_isalnum('+'));
+		printf("%s\tisalnum 'A' --> %d\n", color, isalnum('A'));	
+		printf("%s\tisalnum 'Z' --> %d\n", color, isalnum('Z'));
+		printf("%s\tisalnum 'a' --> %d\n", color, isalnum('a'));	
+		printf("%s\tisalnum 'z' --> %d\n", color, isalnum('z'));	
+		printf("%s\tisalnum '0' --> %d\n", color, isalnum('0'));
+		printf("%s\tisalnum '9' --> %d\n", color, isalnum('9'));
+		printf("%s\tisalnum '+' --> %d\n", color, isalnum('+'));
+		printf("%s******************************************************\n", color);
+	}	
+//fn_isdigit(c);	
+	i = 1;
 	if (ft_isdigit('0') == 1 && ft_isdigit('9') == 1 && ft_isdigit('X') == 0)
 		i = 2;
 	color = get_color(i);
-	printf("%s\nLa versión ft_isdigit de %s vs isdigit\n", WHITE, c);
-	printf("%sft_isdigit 0 --> %d\n", color, ft_isdigit('0'));
-	printf("%sft_isdigit 9 --> %d\n", color, ft_isdigit('9'));	
-	printf("%sft_isdigit X --> %d\n", color, ft_isdigit('X'));	
-	printf("%sisdigit 0 --> %d\n", color, isdigit('0'));
-	printf("%sisdigit 9 --> %d\n", color, isdigit('9'));	
-	printf("%sisdigit X --> %d\n", color, isdigit('X'));
-	printf("%s******************************************************\n", color);
-	i = 1;//fn_isalpha(c);
+	printf("%sft_isdigit vs isdigit\n", color);
+	if (i == 1 || ft_strncmp(fn, "isdigit", 7) == 0)
+	{
+		printf("%s\tft_isdigit 0 --> %d\n", color, ft_isdigit('0'));
+		printf("%s\tft_isdigit 9 --> %d\n", color, ft_isdigit('9'));	
+		printf("%s\tft_isdigit X --> %d\n", color, ft_isdigit('X'));	
+		printf("%s\tisdigit 0 --> %d\n", color, isdigit('0'));
+		printf("%s\tisdigit 9 --> %d\n", color, isdigit('9'));	
+		printf("%s\tisdigit X --> %d\n", color, isdigit('X'));
+		printf("%s******************************************************\n", color);		
+	}
+//fn_isalpha(c);
+i = 1;
 	if (ft_isalpha('A') == 1 && ft_isalpha('Z') == 1 
 		&& ft_isalpha('a') == 1 && ft_isalpha('z') == 1 
 		&& ft_isalpha('0') == 0)
 		i = 2;
 	color = get_color(i);
-	printf("%s\nLa versión ft_isalpha de %s vs isalpha\n", WHITE, c);
-	printf("%sft_isalpha 'A' --> %d\n", color, ft_isalpha('A'));
-	printf("%sft_isalpha 'Z' --> %d\n", color, ft_isalpha('Z'));	
-	printf("%sft_isalpha 'a' --> %d\n", color, ft_isalpha('a'));		
-	printf("%sft_isalpha 'z' --> %d\n", color, ft_isalpha('z'));
-	printf("%sft_isalpha '0' %d\n", color, ft_isalpha('0'));	
-	printf("%sisalpha 'A' --> %d\n", color, isalpha('A'));
-	printf("%sisalpha 'Z' --> %d\n", color, isalpha('Z'));	
-	printf("%sisalpha 'a' --> %d\n", color, isalpha('a'));		
-	printf("%sisalpha 'z' --> %d\n", color, isalpha('z'));
-	printf("%sisalpha '0' %d\n", color, isalpha('0'));
-	printf("%s******************************************************\n", color);
+	printf("%sft_isalpha vs isalpha\n", color);
+	if (i == 1 || ft_strncmp(fn, "isalpha", 7) == 0)
+	{	
+		printf("%s\tft_isalpha 'A' --> %d\n", color, ft_isalpha('A'));
+		printf("%s\tft_isalpha 'Z' --> %d\n", color, ft_isalpha('Z'));	
+		printf("%s\tft_isalpha 'a' --> %d\n", color, ft_isalpha('a'));		
+		printf("%s\tft_isalpha 'z' --> %d\n", color, ft_isalpha('z'));
+		printf("%s\tft_isalpha '0' %d\n", color, ft_isalpha('0'));	
+		printf("%s\tisalpha 'A' --> %d\n", color, isalpha('A'));
+		printf("%s\tisalpha 'Z' --> %d\n", color, isalpha('Z'));	
+		printf("%s\tisalpha 'a' --> %d\n", color, isalpha('a'));		
+		printf("%s\tisalpha 'z' --> %d\n", color, isalpha('z'));
+		printf("%s\tisalpha '0' %d\n", color, isalpha('0'));
+		printf("%s******************************************************\n", color);
+	}
  
     printf("%s\n*********************NORMINETTE***********************\n", WHITE);
 	norminette = 0;
+	if (bonus == 's')
+	{
+//ft_lstmap_bonus.c
+		result = check_norminette("ft_lstmap_bonus.c");
+		if (result == -1)
+			printf("%sHubo un error al ejecutar norminette. ft_lstmap_bonus.c\n", RED);
+		else
+			norminette = norminette + result;
+//ft_lstiter_bonus.c
+		result = check_norminette("ft_lstiter_bonus.c");
+		if (result == -1)
+			printf("%sHubo un error al ejecutar norminette. ft_lstiter_bonus.c\n", RED);
+		else
+			norminette = norminette + result;
+//ft_lstclear_bonus.c
+		result = check_norminette("ft_lstclear_bonus.c");
+		if (result == -1)
+			printf("%sHubo un error al ejecutar norminette. ft_lstclear_bonus.c\n", RED);
+		else
+			norminette = norminette + result;
+//ft_lstdelone_bonus.c
+		result = check_norminette("ft_lstdelone_bonus.c");
+		if (result == -1)
+			printf("%sHubo un error al ejecutar norminette. ft_lstdelone_bonus.c\n", RED);
+		else
+			norminette = norminette + result;
+//ft_lstadd_back_bonus.c
+		result = check_norminette("ft_lstadd_back_bonus.c");
+		if (result == -1)
+			printf("%sHubo un error al ejecutar norminette. ft_lstadd_back_bonus.c\n", RED);
+		else
+			norminette = norminette + result;
+//ft_lstlast_bonus.c
+		result = check_norminette("ft_lstlast_bonus.c");
+		if (result == -1)
+			printf("%sHubo un error al ejecutar norminette. ft_lstlast_bonus.c\n", RED);
+		else
+			norminette = norminette + result;
+//ft_lstsize_bonus.c
+		result = check_norminette("ft_lstsize_bonus.c");
+		if (result == -1)
+			printf("%sHubo un error al ejecutar norminette. ft_lstsize_bonus.c\n", RED);
+		else
+			norminette = norminette + result;
+//ft_lstadd_front_bonus.c
+		result = check_norminette("ft_lstadd_front_bonus.c");
+		if (result == -1)
+			printf("%sHubo un error al ejecutar norminette. ft_lstadd_front_bonus.c\n", RED);
+		else
+			norminette = norminette + result;
+//ft_lstnew_bonus.c
+		result = check_norminette("ft_lstnew_bonus.c");
+		if (result == -1)
+			printf("%sHubo un error al ejecutar norminette. ft_lstnew_bonus.c\n", RED);
+		else
+			norminette = norminette + result;
+	}
+//ft_putnbr_fd.c
+	result = check_norminette("ft_putnbr_fd.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_putnbr_fd.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_putendl_fd.c
+	result = check_norminette("ft_putendl_fd.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_putendl_fd.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_putstr_fd.c
+	result = check_norminette("ft_putstr_fd.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_putstr_fd.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_putchar_fd.c
+	result = check_norminette("ft_putchar_fd.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_putchar_fd.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_striteri.c
+	result = check_norminette("ft_striteri.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_striteri.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_strmapi.c
+	result = check_norminette("ft_strmapi.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_strmapi.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_itoa.c
+	result = check_norminette("ft_itoa.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_itoa.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_split.c
+	result = check_norminette("ft_split.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_split.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_strtrim.c
+	result = check_norminette("ft_strtrim.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_strtrim.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_strjoin.c
+	result = check_norminette("ft_strjoin.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_strjoin.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_substr.c
+	result = check_norminette("ft_substr.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_substr.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_strdup.c
+	result = check_norminette("ft_strdup.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_strdup.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_calloc.c
+	result = check_norminette("ft_calloc.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_calloc.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_atoi.c
+	result = check_norminette("ft_atoi.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_atoi.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_strnstr.c
+	result = check_norminette("ft_strnstr.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_strnstr.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_memcmp.c
+	result = check_norminette("ft_memcmp.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_memcmp.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_memchr.c
+	result = check_norminette("ft_memchr.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_memchr.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_strncmp.c
+	result = check_norminette("ft_strncmp.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_strncmp.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_strrchr.c
+	result = check_norminette("ft_strrchr.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_strrchr.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_strchr.c
+	result = check_norminette("ft_strchr.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_strchr.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_tolower.c
+	result = check_norminette("ft_tolower.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_tolower.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_toupper.c
+	result = check_norminette("ft_toupper.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_toupper.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_strlcat.c
+	result = check_norminette("ft_strlcat.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_strlcat.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_strlcpy.c
+	result = check_norminette("ft_strlcpy.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_strlcpy.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_memmove.c
+	result = check_norminette("ft_memmove.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_memmove.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_memcpy.c
+	result = check_norminette("ft_memcpy.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_memcpy.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_bzero
+	result = check_norminette("ft_bzero.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_bzero.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_memset		
+	result = check_norminette("ft_memset.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_memset.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_strlen		
+	result = check_norminette("ft_strlen.c");
+	if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_strlen.c\n", RED);
+	else
+		norminette = norminette + result;
+//ft_isprint		
 	result = check_norminette("ft_isprint.c");
 	if (result == -1)
 		printf("%sHubo un error al ejecutar norminette. ft_isprint.c\n", RED);
 	else
-		norminette = norminette + result;
-		
-	
+		norminette = norminette + result;	
+//ft_isascii	
 	result = check_norminette("ft_isascii.c");
 	if (result == -1)
 		printf("%sHubo un error al ejecutar norminette. ft_isascii.c\n", RED);
 	else
 		norminette = norminette + result;
+//ft_isalnum		
 	result = check_norminette("ft_isalnum.c");
 	if (result == -1)
 		printf("%sHubo un error al ejecutar norminette. ft_isalnum.c\n", RED);
 	else
-		norminette = norminette + result;		
+		norminette = norminette + result;
+//ft_isdigit				
 	result = check_norminette("ft_isdigit.c");
 	if (result == -1)
 		printf("%sHubo un error al ejecutar norminette. ft_isdigit.c\n", RED);
 	else
 		norminette = norminette + result;
+//fn_isalpha(c);		
     result = check_norminette("ft_isalpha.c");
 	if (result == -1)
 		printf("%sHubo un error al ejecutar norminette. ft_isalpha.c\n", RED);
