@@ -6,7 +6,7 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:48:02 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/27 08:31:09 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/27 09:58:30 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,15 @@ int check_norminette(const char *filename) {
 	color = get_color(7);
     // Lee la salida de norminette línea por línea
     while (fgets(buffer, sizeof(buffer), pipe) != NULL) {
-        printf("%s%s", color, buffer); // Imprime la salida de norminette para depuración
+		if (strstr(buffer, ".c: OK!") != NULL) {
+			color = get_color(2);
+            printf("%s%s", color, buffer); // Imprime la salida de norminette para depuración
+        }
+		else
+		{
+			color = get_color(1);
+            printf("%s%s", color, buffer);}
+        
 
         // Cuenta los errores (esto es una simplificación; deberías ajustar esto según la salida real de norminette)
         if (strstr(buffer, "Error") != NULL) {
@@ -75,85 +83,67 @@ int check_norminette(const char *filename) {
         fprintf(stderr, "Error al cerrar la tubería.\n");
         return -1;
     }
-
+	if (error_count > 1)
+		error_count--;
     return error_count;
 }
 
-void	fn_isalpha(char	*c)
+int	main(int argc, char **argv)
 {
+	char		*c;
 	int			i;
 	int 		result;
 	const char *color;
-
-	i = 1;
-	if (ft_isalpha('A') == 1 && ft_isalpha('Z') == 1 
-		&& ft_isalpha('a') == 1 && ft_isalpha('z') == 1 
-		&& ft_isalpha('0') == 0)
+	
+	if (argc != 2)
+	{
+		printf("\033[0;91m\nError en el número de argumentos\n");
+		printf("\033[0;92mPrueba con: ./main \"Tu Nombre\"\n\n");
+		return (0);
+	}
+	color = get_color(6);
+	printf("\033[H\033[J");
+	printf("%s******************************************************\n", color);
+	printf("%s******************************************************\n", color);
+	printf("%s******************************************************\n", color);
+	c = argv[1];
+	
+	
+	
+	i = 1;//fn_isascii(c);
+	if (ft_isascii('A') == 1 && ft_isascii('Z') == 1 
+		&& ft_isascii('a') == 1 && ft_isascii('z') == 1 
+		&& ft_isascii('0') == 1 && ft_isascii('9') == 1
+		&& ft_isascii(128) == 0)
 		i = 2;
 	color = get_color(i);
-	printf("%s\n****************************** ft_isalpha vs isalpha\n", WHITE);
+	printf("%s\n****************************** ft_isascii vs isascii\n", WHITE);
 	printf("%s\t%s Tu resultado tiene que ser 0 ó 1\n", color, c);
-	printf("%sDe la 'A' a la 'Z' %d-%d\n", color, ft_isalpha('A'), ft_isalpha('Z'));	
-	printf("%sDe la 'a' a la 'z' %d-%d\n", color, ft_isalpha('a'), ft_isalpha('z'));
-	printf("%sCaracter '0' %d\n", color, ft_isalpha('0'));	
-	printf("%s\tSe esperaba 0 o mayor que 0 (1024)\n", color);
-	printf("%sDe la 'A' a la 'Z' %d-%d\n", color, isalpha('A'), isalpha('Z'));	
-	printf("%sDe la 'a' a la 'z' %d-%d\n", color, isalpha('a'), isalpha('z'));
-	printf("%sCaracter '0' %d\n", color, isalpha('0'));
-	printf("%s******************************************************\n", color);
-	color = get_color(7);
-    result = check_norminette("ft_isalpha.c");
-    if (result == -1)
-	{
-        color = get_color(1);
-		printf("%sHubo un error al ejecutar norminette. ft_isalpha.c\n", color);
-    }else
-	{
-        color = get_color(7);
-		printf("%sNúmero de errores de norminette: %d\n", color, result);
-    }	
+	printf("%sDe la 'A' a la 'Z' %d-%d\n", color, ft_isascii('A'), ft_isascii('Z'));	
+	printf("%sDe la 'a' a la 'z' %d-%d\n", color, ft_isascii('a'), ft_isascii('z'));	
+	printf("%sDel 0 al 9 %d-%d\n", color, ft_isascii('0'), ft_isascii('9'));	
+	printf("%sCaracter 128 %d\n", color, ft_isascii(128));	
+	printf("%s\tSe esperaba 0 o mayor que 0 (8)\n", color);
+	printf("%sDe la 'A' a la 'Z' %d-%d\n", color, __isascii('A'), __isascii('Z'));	
+	printf("%sDe la 'a' a la 'z' %d-%d\n", color, __isascii('a'), __isascii('z'));	
+	printf("%sDel 0 al 9 %d-%d\n", color, __isascii('0'), __isascii('9'));	
+	printf("%sCaracter 128 %d\n", color, __isascii(128));	
 	printf("%s******************************************************\n", color);	
-}
-
-void	fn_isdigit(char	*c)
-{
-	int			i;
-	int 		result;
-	const char *color;
-	
-	i = 1;
-	if (ft_isdigit('0') == 1 && ft_isdigit('9') == 1 && ft_isdigit('X') == 0)
-		i = 2;
-	color = get_color(i);
-	printf("%s\n****************************** ft_isalpha vs isalpha\n", WHITE);
-	printf("%s\t%s Tu resultado tiene que ser 0 ó 1\n", color, c);
-	printf("%sDel 0 al 9 %d-%d\n", color, ft_isdigit('0'), ft_isdigit('9'));	
-	printf("%sCaracter 'X' %d\n", color, ft_isdigit('X'));	
-	printf("%s\tSe esperaba 0 o mayor que 0 (2048)\n", color);
-	printf("%sDel 0 al 9 %d-%d\n", color, isdigit('0'), isdigit('9'));	
-	printf("%sCaracter 'X' %d\n", color, isdigit('X'));	;
-	printf("%s******************************************************\n", color);
-	color = get_color(7);
-    result = check_norminette("ft_isdigit.c");
-    if (result == -1)
-	{
+    result = check_norminette("ft_isascii.c");
+	if (result == -1)
         color = get_color(1);
-		printf("%sHubo un error al ejecutar norminette. ft_isdigit.c\n", color);
-    }else
-	{
-        color = get_color(7);
-		printf("%sNúmero de errores de norminette: %d\n", color, result);
-    }	
-	printf("%s******************************************************\n", color);			
-}
-
-void	fn_isalnum(char	*c)
-{
-	int			i;
-	int 		result;
-	const char *color;
-	
-	i = 1;
+	else if (result == 0)
+        color = get_color(2);
+	else
+        color = get_color(1);
+    if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_isascii.c\n", color);
+	else if (result == 0)
+		printf("%sNorminette\n", color);
+	else
+		printf("%sErrores Norminette: %d\n", color, result);
+	printf("%s******************************************************\n", color);	
+	i = 1;//fn_isalnum(c);
 	if (ft_isalpha('A') == 1 && ft_isalpha('Z') == 1 
 		&& ft_isalpha('a') == 1 && ft_isalpha('z') == 1 
 		&& ft_isalnum('0') == 1 && ft_isalnum('9') == 1
@@ -172,40 +162,79 @@ void	fn_isalnum(char	*c)
 	printf("%sDel 0 al 9 %d-%d\n", color, isalnum('0'), isalnum('9'));	
 	printf("%sCaracter '+' %d\n", color, isalnum('+'));
 	printf("%s******************************************************\n", color);	
-	color = get_color(7);
     result = check_norminette("ft_isalnum.c");
-    if (result == -1)
-	{
+	if (result == -1)
         color = get_color(1);
+	else if (result == 0)
+        color = get_color(2);
+	else
+        color = get_color(1);
+    if (result == -1)
 		printf("%sHubo un error al ejecutar norminette. ft_isalnum.c\n", color);
-    }else
-	{
-        color = get_color(7);
-		printf("%sNúmero de errores de norminette: %d\n", color, result);
-    }	
-	printf("%s******************************************************\n", color);		
-}
+	else if (result == 0)
+		printf("%sNorminette\n", color);
+	else
+		printf("%sErrores Norminette: %d\n", color, result);
+	printf("%s******************************************************\n", color);
+	i = 1;//fn_isdigit(c);
+	if (ft_isdigit('0') == 1 && ft_isdigit('9') == 1 && ft_isdigit('X') == 0)
+		i = 2;
+	color = get_color(i);
+	printf("%s\n****************************** ft_isdigit vs isdigit\n", WHITE);
+	printf("%s\t%s Tu resultado tiene que ser 0 ó 1\n", color, c);
+	printf("%sDel 0 al 9 %d-%d\n", color, ft_isdigit('0'), ft_isdigit('9'));	
+	printf("%sCaracter 'X' %d\n", color, ft_isdigit('X'));	
+	printf("%s\tSe esperaba 0 o mayor que 0 (2048)\n", color);
+	printf("%sDel 0 al 9 %d-%d\n", color, isdigit('0'), isdigit('9'));	
+	printf("%sCaracter 'X' %d\n", color, isdigit('X'));	;
+	printf("%s******************************************************\n", color);
+    result = check_norminette("ft_isdigit.c");
+	if (result == -1)
+        color = get_color(1);
+	else if (result == 0)
+        color = get_color(2);
+	else
+        color = get_color(1);	
+    if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_isdigit.c\n", color);
+	else if (result == 0)
+		printf("%sNorminette\n", color);
+	else
+		printf("%sErrores Norminette: %d\n", color, result);
+	printf("%s******************************************************\n", color);
+	i = 1;//fn_isalpha(c);
+	if (ft_isalpha('A') == 1 && ft_isalpha('Z') == 1 
+		&& ft_isalpha('a') == 1 && ft_isalpha('z') == 1 
+		&& ft_isalpha('0') == 0)
+		i = 2;
+	color = get_color(i);
+	printf("%s\n****************************** ft_isalpha vs isalpha\n", WHITE);
+	printf("%s\t%s Tu resultado tiene que ser 0 ó 1\n", color, c);
+	printf("%sDe la 'A' a la 'Z' %d-%d\n", color, ft_isalpha('A'), ft_isalpha('Z'));	
+	printf("%sDe la 'a' a la 'z' %d-%d\n", color, ft_isalpha('a'), ft_isalpha('z'));
+	printf("%sCaracter '0' %d\n", color, ft_isalpha('0'));	
+	printf("%s\tSe esperaba 0 o mayor que 0 (1024)\n", color);
+	printf("%sDe la 'A' a la 'Z' %d-%d\n", color, isalpha('A'), isalpha('Z'));	
+	printf("%sDe la 'a' a la 'z' %d-%d\n", color, isalpha('a'), isalpha('z'));
+	printf("%sCaracter '0' %d\n", color, isalpha('0'));
+	printf("%s******************************************************\n", color);
+    result = check_norminette("ft_isalpha.c");
+    if (result == -1)
+        color = get_color(1);
+	else if (result == 0)
+        color = get_color(2);
+	else
+        color = get_color(1); 
+    if (result == -1)
+		printf("%sHubo un error al ejecutar norminette. ft_isalpha.c\n", color);
+	else if (result == 0)
+		printf("%sNorminette\n", color);
+	else
+		printf("%sErrores Norminette: %d\n", color, result);	
+	printf("%s******************************************************\n", color);	
+ 
 
-int	main(int argc, char **argv)
-{
-	char		*c;
-	const char *color;
 	
-	if (argc != 2)
-	{
-		printf("\033[0;91m\nError en el número de argumentos\n");
-		printf("\033[0;92mPrueba con: ./main \"Tu Nombre\"\n\n");
-		return (0);
-	}
-	color = get_color(6);
-	printf("\033[H\033[J");
-	printf("%s******************************************************\n", color);
-	printf("%s******************************************************\n", color);
-	printf("%s******************************************************\n", color);
-	c = argv[1];
-	fn_isalnum(c);
-	fn_isdigit(c);
-	fn_isalpha(c);
 	printf("%s\n\tHola %s revisa hacia arriba los resultados\n\n", color, c);
 	return (0);
 }
