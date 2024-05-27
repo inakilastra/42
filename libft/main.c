@@ -6,11 +6,16 @@
 /*   By: ilastra- <ilastra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:48:02 by ilastra-          #+#    #+#             */
-/*   Updated: 2024/05/27 09:58:30 by ilastra-         ###   ########.fr       */
+/*   Updated: 2024/05/27 10:00:25 by ilastra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ctype.h"
+#include "string.h"
+#include "strings.h"
+#include "stdlib.h"
+#include "fcntl.h" 
 
 #define DEF_COLOR "\033[0;39m"
 #define GRAY "\033[0;90m"
