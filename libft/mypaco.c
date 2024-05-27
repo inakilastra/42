@@ -162,7 +162,7 @@ int mypaco(char bonus, char *fn)
 		i = 2;
 	color = get_color1(i);
 	printf("%sft_memset  vs memset\n", color);		
-	if (i == 1)
+	if (i == 1 || ft_strncmp(fn, "memset", 6) == 0)
 	{
 		char strA[10] = "Hola Mundo";
 		ft_memset(strA, 'X', 5);
@@ -178,7 +178,7 @@ int mypaco(char bonus, char *fn)
 		i = 2;
 	color = get_color1(i);
 	printf("%sft_strlen  vs strlen\n", color);
-	if (i == 1)
+	if (i == 1 || ft_strncmp(fn, "strlen", 6) == 0)
 	{
 		printf("%s\tft_strlen \"Hola Mundo\" --> %ld\n", color, ft_strlen("Hola Mundo"));	
 		printf("%s\tstrlen \"Hola Mundo\" --> %ld\n", color, strlen("Hola Mundo"));
@@ -193,7 +193,7 @@ int mypaco(char bonus, char *fn)
 		i = 2;
 	color = get_color1(i);
 	printf("%sft_isprint vs isprint\n", color);
-	if (i == 1)
+	if (i == 1 || ft_strncmp(fn, "isprint", 7) == 0)
 	{
 		printf("%s\tft_isprint 'A' --> %d\n", color, ft_isprint('A'));	
 		printf("%s\tft_isprint 'a' --> %d\n", color, ft_isprint('a'));	
