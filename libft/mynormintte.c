@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mynormintte.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: inaki <inaki@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/29 23:01:02 by inaki             #+#    #+#             */
+/*   Updated: 2024/05/29 23:19:22 by inaki            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <ctype.h>
 #include <string.h>
@@ -15,72 +27,74 @@
 #define CYAN "\033[0;96m"
 #define WHITE "\033[0;97m"
 
-const char* get_color2(int value) {
-    switch (value) {
-        case 0:
-            return GRAY;
-        case 1:
-            return RED;
-        case 2:
-            return GREEN;
-        case 3:
-            return YELLOW;
-        case 4:
-            return BLUE;
-        case 5:
-            return MAGENTA;
-        case 6:
-            return CYAN;
-        case 7:
-            return WHITE;												
-        default:
-            return DEF_COLOR;
-    }
+const char	*get_color2(int value)
+{
+	switch (value)
+	{
+		case 0:
+			return (GRAY);
+		case 1:
+			return (RED);
+		case 2:
+			return (GREEN);
+		case 3:
+			return (YELLOW);
+		case 4:
+			return (BLUE);
+		case 5:
+			return (MAGENTA);
+		case 6:
+			return (CYAN);
+		case 7:
+			return (WHITE);												
+		default:
+			return (DEF_COLOR);
+	}
 }
 
-int check_norminette(const char *filename) {
-    char buffer[128];
-    FILE *pipe;
-    int error_count = 0;
-	const char *color;
-	
-    // Ejecuta norminette y abre una tubería para leer su salida
-    char command[256];
-    snprintf(command, sizeof(command), "norminette %s", filename);
-    pipe = popen(command, "r");
-    if (!pipe) {
-        fprintf(stderr, "Error al ejecutar norminette.\n");
-        return -1;
-    }
-	color = get_color2(7);
-    // Lee la salida de norminette línea por línea
-    while (fgets(buffer, sizeof(buffer), pipe) != NULL) {
-		if (strstr(buffer, ".c: OK!") != NULL) {
-			color = get_color2(2);
-            printf("%s%s", color, buffer); // Imprime la salida de norminette para depuración
-        }
+int	check_norminette(const char *filename)
+{
+	char		buffer[128];
+	FILE		*pipe;
+	int			error_count;
+	char		command[256];
+
+	error_count = 0;
+	snprintf(command, sizeof(command), "norminette %s", filename);
+	pipe = popen(command, "r");
+	if (!pipe)
+	{
+		fprintf(stderr, "Error al ejecutar norminette.\n");
+		return (-1);
+	}
+	while (fgets(buffer, sizeof(buffer), pipe) != NULL)
+	{
+		if (strstr(buffer, ".c: OK!") != NULL)
+			printf("%s%s", GREEN, buffer);
 		else
-		{
-			color = get_color2(1);
-            printf("%s%s", color, buffer);}
-        
-
-        // Cuenta los errores (esto es una simplificación; deberías ajustar esto según la salida real de norminette)
-        if (strstr(buffer, "Error") != NULL) {
-            error_count++;
-        }
-    }
-
-    // Cierra la tubería
-    if (pclose(pipe) == -1) {
-        fprintf(stderr, "Error al cerrar la tubería.\n");
-        return -1;
-    }
+			printf("%s%s", RED, buffer);
+		if (strstr(buffer, "Error") != NULL)
+			error_count++;
+	}
+	if (pclose(pipe) == -1) 
+	{
+		fprintf(stderr, "Error al cerrar la tubería.\n");
+		return (-1);
+	}
 	if (error_count > 1)
 		error_count--;
-    return error_count;
+	return (error_count);
 }
 
+/**
+ * Ejecuta norminette y abre una tubería para leer su salida
+ * int	check_norminette(const char *filename)
+ * Lee la salida de norminette línea por línea
+ * Imprime la salida de norminette para depuración
+ * Cuenta los errores (esto es una simplificación; deberías ajustar esto 
+   según la salida real de norminette)
+ * Cierra la tubería
+*/
 
 int mynorminette(char bonus)
 {
